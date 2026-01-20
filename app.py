@@ -70,7 +70,7 @@ except Exception as e:
 
 # --- HEADER ---
 st.title("📡 SG-R.A.D.A.R")
-st.markdown("**세계화학공업 신속 점착 진단 및 분석 추천기 (Rapid Adhesion Diagnosis & Analysis Recommender)**")
+st.markdown("**세계화학공업(주) 신속 점착 진단 및 분석 추천기 (Rapid Adhesion Diagnosis & Analysis Recommender)**")
 st.markdown("---")
 
 # --- SIDEBAR (INPUT) ---
@@ -208,7 +208,7 @@ else:
     col1, col2 = st.columns(2)
     with col1:
         st.markdown("### ❓ SG-R.A.D.A.R란?")
-        st.write("세계화학공업의 **AI Vision & Physics Engine**이 결합된 최첨단 점착 솔루션입니다.")
+        st.write("세계화학공업(주)의 **AI Vision & Physics Engine**이 결합된 최첨단 점착 솔루션입니다.")
         st.write("복잡한 물성 계산 없이 사진만으로 최적의 솔루션을 제안할 수 있도록 돕습니다.")
     
     with col2:
