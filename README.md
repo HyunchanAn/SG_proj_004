@@ -72,4 +72,11 @@ python test_scenario.py
 - `libs/` 폴더 내의 일부 모듈은 데모를 위해 **Mock(가상) 모드**와 호환되도록 설계되었습니다. 실제 센서가 없어도 동작합니다.
 - 실제 사용 시 `models/mobile_sam.pt` 파일이 필요할 수 있습니다.
 
+## 🧪 Test Environment Info
+> **Note**: This environment uses **Dummy Data** for testing purposes.
+- `models/mobile_sam.pt`: This is a dummy file to satisfy existence checks. It does NOT contain a real model.
+- `test_*.jpg`: Generated placeholder images.
+- To use real analysis, please replace these files with actual assets.
+
+
 
