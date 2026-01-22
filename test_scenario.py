@@ -11,10 +11,16 @@ def run_test():
         print(f"FAILED to initialize controller: {e}")
         return
 
-    # 2. Mock Image Paths
-    surface_img = "test_surface.jpg"
-    water_imgs = ["test_water1.jpg", "test_water2.jpg"]
-    diiodo_imgs = ["test_diiodo1.jpg"] 
+    # 2. Test Image Paths (User Provided)
+    image_dir = "test_images"
+    surface_img = os.path.join(image_dir, "surface_test_image (1).jpg")
+    water_imgs = [
+        os.path.join(image_dir, "drop_test_image (1).jpg"),
+        os.path.join(image_dir, "drop_test_image (2).jpg")
+    ]
+    diiodo_imgs = [
+        os.path.join(image_dir, "drop_test_image (3).jpg")
+    ] 
     
     # 3. Run Diagnosis
     try:

@@ -72,11 +72,14 @@ python test_scenario.py
 - `libs/` 폴더 내의 일부 모듈은 데모를 위해 **Mock(가상) 모드**와 호환되도록 설계되었습니다. 실제 센서가 없어도 동작합니다.
 - 실제 사용 시 `models/mobile_sam.pt` 파일이 필요할 수 있습니다.
 
-## 🧪 Test Environment Info
-> **Note**: This environment uses **Dummy Data** for testing purposes.
-- `models/mobile_sam.pt`: This is a dummy file to satisfy existence checks. It does NOT contain a real model.
-- `test_*.jpg`: Generated placeholder images.
-- To use real analysis, please replace these files with actual assets.
+## 🧪 테스트 환경 및 Real AI 모드 (Real AI Mode)
+이 레포지토리는 이제 MobileSAM을 활용한 **실제 AI 추론(Real AI Inference)**을 지원합니다.
 
+- **AI 모델**: `models/mobile_sam.pt` (MobileSAM 가중치)가 포함되어 있습니다. 시스템은 이 모델을 로드하여 CPU/GPU에서 실제로 추론을 수행합니다.
+- **테스트 데이터**: `test_images/` 폴더에 실제 테스트용 **실사 이미지(Real Photos)**가 포함되어 있습니다.
+    - `surface_test_image.jpg`: 피착제 표면
+    - `drop_test_image.jpg`: 액적(물방울/다이아이오도메탄)
+    - `test_scenario.py` 실행 시 이 이미지들을 사용하여 실제 분석을 수행합니다.
 
-
+## 🌐 배포 (Deployment)
+이 프로젝트는 **Streamlit Community Cloud** 배포에 최적화되어 있습니다.
