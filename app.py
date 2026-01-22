@@ -134,7 +134,7 @@ if analyze_btn:
                 st.subheader("🔎 1단계: 피착제 진단 결과")
                 col1, col2, col3 = st.columns(3)
                 with col1:
-                    st.image(surface_file, caption="입력된 피착제", use_container_width=True)
+                    st.image(surface_file, caption="입력된 피착제", use_column_width=True)
                 with col2:
                     st.markdown(f"""
                     <div class="metric-card">
@@ -201,6 +201,7 @@ if analyze_btn:
                 st.error(f"분석 중 오류가 발생했습니다: {e}")
                 st.exception(e)
 
+
 else:
     # Landing Page State
     st.info("👈 왼쪽 사이드바에서 사진을 업로드하고 'AI 진단' 버튼을 눌러주세요.")
@@ -216,4 +217,22 @@ else:
         st.write("1. **V-SAMS**: 표면의 거칠기와 재질을 시각적으로 분석")
         st.write("2. **DeepDrop**: 물방울의 접촉각을 통해 표면 에너지 계산")
         st.write("3. **XGBoost Brain**: 100만 건의 가상 실험 데이터를 학습한 AI가 최적 매칭 예측")
+
+# --- TECHNICAL DEMO DISCLAIMER (Footer) ---
+st.markdown("---")
+with st.expander("ℹ️ Technical Demonstration Notes (더미 데이터 및 미구현 기능 명세)", expanded=True):
+    st.markdown("""
+    **본 시스템은 기술 시연을 위해 일부 구간에 더미 데이터 및 고정값을 사용하고 있습니다.**
+    
+    | 구분 | 사용 중인 더미 데이터/로직 (Current Status) | 데이터 위치 (Location) | 실제 운영 시 필요 데이터 (Required for Production) |
+    |---|---|---|---|
+    | **표면 거칠기 (Roughness)** | 고정값 `0.5` 사용 (알고리즘 미적용) | `sg_radar_controller.py` 내 하드코딩 | V-SAMS의 거칠기 측정 모듈 연동 필요 |
+    | **제품 데이터베이스** | 샘플 제품 62종 데이터 | `assets/sg_product_db.csv` | 전체 제품 물성 정보가 담긴 ERP/DB 연동 |
+    | **소재 분류 (Materials)** | Metal/Plastic 외 0으로 고정 | `sg_radar_controller.py` 내 Feature Vector 생성 로직 | Glass, Wood 등 다양한 소재에 대한 One-Hot Encoding 로직 확장 |
+    | **AI 모델 파일** | MobileSAM (`mobile_sam.pt`) | `models/mobile_sam.pt` | (현재 적용됨) 지속적인 파인튜닝 모델 업데이트 |
+    
+    > **Note**: 업로드하신 사진은 실제 분석에 사용되지만, 위 항목들은 시뮬레이션을 위해 사전 정의된 값을 참조합니다.
+    """)
+
+
 
