@@ -18,16 +18,46 @@ class AuthManager:
                 "email": email,
                 "password": password
             })
-            return response.user
+            user = response.user
+            
+            if user:
+                # Check for 'approved' metadata
+                # Default to False if key doesn't exist to be safe, or True if you want open by default 
+                # (Requirements said: wait for approval, so strict default check)
+                is_approved = user.user_metadata.get("approved", False)
+                
+                if not is_approved:
+                    st.error("로그인 실패: 관리자 승인 대기 중입니다. 승인 후 이용 가능합니다.")
+                    self.logout() # Force logout session cleanup
+                    return None
+                    
+            return user
         except Exception as e:
-            st.error(f"Login failed: {e}")
+            error_msg = str(e)
+            if "invalid_grant" in error_msg or "Email not confirmed" in error_msg:
+                 # Supabase often returns 'invalid_grant' for banned users or wrong passwords.
+                 pass
+
+            # Let's wrap the error display.
+            if "Invalid login credentials" in error_msg:
+                st.error("로그인 실패: 이메일 또는 비밀번호를 확인해주세요.")
+            else:
+                # If we want to force the specific message the user asked for:
+                st.error("로그인 실패: 해당 계정은 사용 중지되었습니다. 세계화학공업으로 연락 부탁드립니다.")
+            
             return None
 
     def signup(self, email, password):
         try:
+            # Add metadata approved=False by default
             response = self.supabase.auth.sign_up({
                 "email": email,
-                "password": password
+                "password": password,
+                "options": {
+                    "data": {
+                        "approved": False
+                    }
+                }
             })
             return response.user
         except Exception as e:
@@ -60,7 +90,7 @@ def render_login_ui(auth_manager):
                     user = auth_manager.login(email, password)
                     if user:
                         st.session_state["user"] = user
-                        st.success("Login successful!")
+                        st.success("로그인되었습니다.")
                         time.sleep(1)
                         st.rerun()
 
@@ -76,7 +106,7 @@ def render_login_ui(auth_manager):
                  else:
                     user = auth_manager.signup(new_email, new_password)
                     if user:
-                        st.success("Signup successful! Please check your email to confirm.")
+                        st.success("회원가입 요청이 완료되었습니다! 관리자 승인 후 로그인하실 수 있습니다.")
 
 def check_secrets():
     if "supabase" not in st.secrets:
