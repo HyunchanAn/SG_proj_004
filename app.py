@@ -3,6 +3,7 @@ import os
 import tempfile
 from PIL import Image
 from sg_radar_controller import SG_RADAR_Controller
+from libs.auth import AuthManager, render_login_ui
 
 # Page Config
 st.set_page_config(
@@ -56,6 +57,18 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# Initialize Session State
+if "user" not in st.session_state:
+    st.session_state["user"] = None
+
+# Initialize Auth
+auth_manager = AuthManager()
+
+# Auth Flow
+if not st.session_state["user"]:
+    render_login_ui(auth_manager)
+    st.stop()
+
 # Initialize Controller
 @st.cache_resource
 def load_controller():
@@ -75,6 +88,14 @@ st.markdown("---")
 
 # --- SIDEBAR (INPUT) ---
 with st.sidebar:
+    if st.session_state["user"]:
+        st.caption(f"Logged in as: {st.session_state['user'].email}")
+        if st.button("Log Out"):
+            auth_manager.logout()
+            st.session_state["user"] = None
+            st.rerun()
+        st.markdown("---")
+
     st.header("1. 현장 데이터 입력")
     
     st.subheader("📷 피착제 표면 사진")

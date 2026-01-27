@@ -11,6 +11,8 @@
 4.  **Real Product Database**: 실제 자사 제품 62종의 물성 데이터를 기반으로 추천합니다.
 5.  **Interactive Dashboard**: Streamlit 기반의 직관적인 UI로 테블릿/PC에서 손쉽게 사용 가능합니다.
 
+6.  **Secure Authentication**: Supabase 기반의 로그인/회원가입 기능을 제공하여 보안을 강화했습니다.
+
 ## 📂 Project Structure
 
 ```bash
@@ -40,8 +42,16 @@ cd SG_RADAR
 python -m pip install --upgrade pip
 
 # 3. Install Dependencies
-pip install streamlit pandas numpy xgboost opencv-python Pillow pypdf torch torchvision ultralytics
+pip install streamlit pandas numpy xgboost opencv-python Pillow pypdf torch torchvision ultralytics supabase
 # (Optional) Install MobileSAM dependencies if needed specific versions
+```
+
+### 4. Setup Secrets
+Supabase 인증을 위해 `.streamlit/secrets.toml` 파일을 생성하고 자격 증명을 입력해야 합니다.
+```toml
+[supabase]
+url = "YOUR_SUPABASE_URL"
+key = "YOUR_SUPABASE_ANON_KEY"
 ```
 
 ## 🚀 Usage

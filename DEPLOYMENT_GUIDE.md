@@ -20,6 +20,10 @@
     - Main file path: `app.py` (**주의**: `streamlit_app.py`가 입력되어 있다면 지우고 `app.py`로 고쳐주세요).
 5.  **"Deploy!"** 클릭.
     *   *Private 레포지토리의 경우*: Streamlit이 권한 승인을 요청할 수 있습니다. "Authorize" 또는 "Grant Access"를 눌러주시면 코드는 비공개로 유지된 채 앱만 배포됩니다.
+6.  **Advanced settings (Secrets)**:
+    - 배포 화면 하단의 "Advanced settings"를 클릭합니다.
+    - "Secrets" 섹션에 `.streamlit/secrets.toml`의 내용을 복사하여 붙여넣습니다 (Supabase URL 및 Key).
+    - 이렇게 해야 배포된 환경에서도 로그인이 가능합니다.
 
 ## 3. 중요 참고사항
 - **더미 데이터**: 배포된 앱도 로컬과 동일하게 기본 설정된 더미 데이터 및 AI 모델을 사용합니다.
