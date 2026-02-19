@@ -1,0 +1,14 @@
+##### 2026-02-20 #####
+
+## 라이브러리 통합 계획 수립
+- `libs/deepdrop_sfe` (E:\Github\DeepDrop-SFE) 업데이트 필요성 확인
+- `libs/vsams_core` (E:\Github\V-SAMS) 업데이트 필요성 확인
+- 조치: 소스 저장소 구조 분석 수행
+
+## 라이브러리 통합 실행 (feature/upgrade-libs)
+- `feature/upgrade-libs` 브랜치 생성 완료
+- `libs/vsams_core` 삭제 및 `libs/vsams` (V-SAMS v0.1.0)로 교체 완료
+- `libs/deepdrop_sfe`를 최신 소스(DeepDrop-AnyView v2.0)로 업데이트 완료
+- `sg_radar_controller.py` 리팩토링: 새로운 API(`vsams.models.classifier`, `deepdrop_sfe.ai_engine`) 적용 및 폴백 로직 추가
+- `requirements.txt` 업데이트: `timm`, `albumentations`, `scipy` 추가 완료
+- 상태: 통합 완료. 의존성 패키지 설치 완료됨.

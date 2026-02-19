@@ -4,16 +4,16 @@ import traceback
 
 sys.path.append(os.path.join(os.path.dirname(__file__), 'libs'))
 
-print("1. Testing vsams_core import...")
+print("1. Testing V-SAMS import...")
 try:
-    from vsams_core import SurfaceAnalyzer
+    from vsams.models.classifier import SurfaceClassifier
     print("   SUCCESS")
 except Exception:
     traceback.print_exc()
 
-print("\n2. Testing deepdrop_sfe import...")
+print("\n2. Testing DeepDrop-SFE import...")
 try:
-    from deepdrop_sfe import AIContactAngleAnalyzer
+    from deepdrop_sfe.ai_engine import AIContactAngleAnalyzer
     print("   SUCCESS")
 except Exception:
     traceback.print_exc()
