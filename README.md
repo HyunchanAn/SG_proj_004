@@ -21,7 +21,7 @@ SG_RADAR/
 │   └── sg_product_db.csv   # 제품 데이터베이스 (62종)
 ├── libs/                   # 핵심 라이브러리
 │   ├── deepdrop_sfe/       # 표면 에너지 분석 모듈
-│   └── vsams_core/         # 표면 재질 분석 모듈
+│   └── vsams/              # 표면 재질 분석 모듈 (v0.1.0)
 ├── models/                 # 학습된 AI 모델 저장소 (.json, .pt)
 ├── SG_products/            # 제품 카탈로그 원본 (PDF)
 └── tools/                  # 유틸리티 스크립트 (데이터 생성, 학습, 파싱 등)

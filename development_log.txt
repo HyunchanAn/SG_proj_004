@@ -12,3 +12,12 @@
 - `sg_radar_controller.py` 리팩토링: 새로운 API(`vsams.models.classifier`, `deepdrop_sfe.ai_engine`) 적용 및 폴백 로직 추가
 - `requirements.txt` 업데이트: `timm`, `albumentations`, `scipy` 추가 완료
 - 상태: 통합 완료. 의존성 패키지 설치 완료됨.
+
+##### 2026-02-25 #####
+
+## feature/upgrade-libs 통합 완료 (main)
+- `feature/upgrade-libs` 브랜치를 `main`으로 병합 완료.
+- DeepDrop-SFE v2.0 및 V-SAMS v0.1.0 라이브러리 공식 통합.
+- 의존성 패키지(`scipy`, `timm`, `albumentations`) 및 모델 파일(`mobile_sam.pt`) 구성 확인.
+- `test_scenario.py` 실행을 통한 최종 검증 완료.
+- 차기 작업: UI 고도화 및 제품 DB 확장 계획 수립.
